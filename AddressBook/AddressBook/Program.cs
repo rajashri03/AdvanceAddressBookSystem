@@ -2,9 +2,11 @@
 using AddressBook;
 
 Console.WriteLine("*************AddressBook System******************");
-Console.WriteLine("Select option\n1)Create AddrssBookServiceDatabase\n2)Create Table\n3)Insert Contact\n4)Fetch COntacts");
+Console.WriteLine("Select option\n1)Create AddrssBookServiceDatabase\n2)Create Table\n3)Insert Contact\n" +
+    "4)Update Details\n5)Fetch COntacts");
 int op = Convert.ToInt16(Console.ReadLine());
 AddressBookData ad = new AddressBookData();
+AddressBookModel addressbook = new AddressBookModel();
 
 switch (op)
 {
@@ -16,23 +18,40 @@ switch (op)
         break;
     case 3:
         Console.WriteLine("************Welcome to Address Book******************");
-        AddressBookModel addressbook = new AddressBookModel();
-        addressbook.First_Name = "Yugansh";
-        addressbook.Last_Name = "Shaha";
-        addressbook.Address = "Mumbai";
-        addressbook.City = "Mumbai";
+        addressbook.First_Name = "Sejal";
+        addressbook.Last_Name = "Lambe";
+        addressbook.Address = "Kale";
+        addressbook.City = "Kolhapur";
         addressbook.State = "Maharashtra";
         addressbook.Zip = "982378";
         addressbook.Phone_Number = "9834783456";
         addressbook.Email = "yugansh@gmail.com";
-        addressbook.AddressbookName = "1";//Addressbook1
-        addressbook.Type = "1";//Family
+        addressbook.AddressbookName = "2";//Addressbook2
+        addressbook.Type = "2";//Friends
         ad.AddContact(addressbook);
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("Record Inserted successfully");
         Console.ResetColor();
         break;
     case 4:
+        Console.WriteLine("************Welcome to Address Book******************");
+        addressbook.First_Name = "Sejal";
+        addressbook.Last_Name = "Telvekar";
+        addressbook.Address = "Kagal";
+        addressbook.City = "Kolhapur";
+        addressbook.State = "Mahgarashtra";
+        addressbook.Zip = "982378";
+        addressbook.Phone_Number = "9876789876";
+        addressbook.Email = "rj@gmail.com";
+        addressbook.AddressbookName = "1";//Addressbook2
+        addressbook.Type = "1";//Family
+        ad.UpdateContact
+            (addressbook);
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("Record Updated successfully");
+        Console.ResetColor();
+        break;
+    case 5:
         ad.GetAllContact();
         break;
     default:
