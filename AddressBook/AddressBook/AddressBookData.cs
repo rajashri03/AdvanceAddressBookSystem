@@ -93,7 +93,7 @@ namespace AddressBook
             finally
             {
                 this.connection.Close();
-    }
+            }
             return false;
         }
 
