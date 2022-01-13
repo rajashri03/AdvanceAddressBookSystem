@@ -77,14 +77,12 @@ namespace AddressBook
 
                     var result = cmd.ExecuteNonQuery();
                     this.connection.Close();
-               
-                if (result != 0)
-                {
-
-                    return true;
+                    if (result != 0)
+                    {
+                        return true;
+                    }
+                    return false;
                 }
-                return false;
-            }
             }
             catch (Exception e)
             {
