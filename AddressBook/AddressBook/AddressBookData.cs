@@ -40,7 +40,7 @@ namespace AddressBook
                 con.Open();
                 SqlCommand cmd = new SqlCommand("Create table AddressBook(id int identity(1,1)primary key,First_Name varchar(200),Last_Name varchar(200),Address varchar(200), City varchar(200), State varchar(200), Zip varchar(200), Phone_Number varchar(50), Email varchar(200)); ", con);
                 cmd.ExecuteNonQuery();
-                Console.WriteLine("Employee Payroll table has been  created successfully!");
+                Console.WriteLine("AddressBook table has been  created successfully!");
                 con.Close();
             }
             catch (Exception e)
@@ -49,7 +49,7 @@ namespace AddressBook
             }
         }
         //Created Connection file
-        public static string ConnFile = @"Data Source=AD-PC\SQLEXPRESS; Initial Catalog =AddressbookService; Integrated Security = True;";
+        public const string ConnFile = @"Data Source=AD-PC\SQLEXPRESS; Initial Catalog =AddressbookService; Integrated Security = True;";
         SqlConnection connection = new SqlConnection(ConnFile);
         /// <summary>
         /// Method to insert data in database
@@ -74,17 +74,14 @@ namespace AddressBook
                     cmd.Parameters.AddWithValue("@AddressbookName", model.AddressbookName);
                     cmd.Parameters.AddWithValue("@Type", model.Type);
                     this.connection.Open();
-
                     var result = cmd.ExecuteNonQuery();
                     this.connection.Close();
-               
-                if (result != 0)
-                {
-
-                    return true;
+                    if (result != 0)
+                    {
+                        return true;
+                    }
+                    return false;
                 }
-                return false;
-            }
             }
             catch (Exception e)
             {
@@ -116,13 +113,10 @@ namespace AddressBook
                     cmd.Parameters.AddWithValue("@AddressbookName", model.AddressbookName);
                     cmd.Parameters.AddWithValue("@Type", model.Type);
                     this.connection.Open();
-
                     var result = cmd.ExecuteNonQuery();
                     this.connection.Close();
-
                     if (result != 0)
                     {
-
                         return true;
                     }
                     return false;
@@ -165,7 +159,9 @@ namespace AddressBook
                             addressmodel.State = datareader.GetString(5);
                             addressmodel.Zip = datareader.GetString(6);
                             addressmodel.Phone_Number = datareader.GetString(7);
-                            addressmodel.Email = datareader.GetString(8);
+                            addressmodel.Email = datareader.GetString(8); 
+                            addressmodel.AddressbookName = datareader.GetString(9);
+                            addressmodel.Type = datareader.GetString(10);
                             Console.WriteLine(addressmodel.First_Name + " " +
                                 addressmodel.Last_Name + " " +
                                 addressmodel.Address + " " +
@@ -173,14 +169,12 @@ namespace AddressBook
                                 addressmodel.State + " " +
                                 addressmodel.Zip + " " +
                                 addressmodel.Phone_Number + " " +
-                                addressmodel.Email + " "
+                                addressmodel.Email + " " +
+                                addressmodel.AddressbookName + " " +
+                                addressmodel.Type
                                 );
                             Console.WriteLine("------------------------------------------------------------");
                         }
-                    }
-                    else
-                    {
-                        System.Console.WriteLine("No data found");
                     }
                 }
             }
