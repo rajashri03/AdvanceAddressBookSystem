@@ -40,7 +40,7 @@ namespace AddressBook
                 con.Open();
                 SqlCommand cmd = new SqlCommand("Create table AddressBook(id int identity(1,1)primary key,First_Name varchar(200),Last_Name varchar(200),Address varchar(200), City varchar(200), State varchar(200), Zip varchar(200), Phone_Number varchar(50), Email varchar(200)); ", con);
                 cmd.ExecuteNonQuery();
-                Console.WriteLine("Employee Payroll table has been  created successfully!");
+                Console.WriteLine("Address book table has been  created successfully!");
                 con.Close();
             }
             catch (Exception e)
@@ -122,6 +122,8 @@ namespace AddressBook
                             addressmodel.Zip = datareader.GetString(6);
                             addressmodel.Phone_Number = datareader.GetString(7);
                             addressmodel.Email = datareader.GetString(8);
+                            addressmodel.AddressbookName = datareader.GetString(9);
+                            addressmodel.Type = datareader.GetString(10);
                             Console.WriteLine(addressmodel.First_Name + " " +
                                 addressmodel.Last_Name + " " +
                                 addressmodel.Address + " " +
@@ -129,7 +131,9 @@ namespace AddressBook
                                 addressmodel.State + " " +
                                 addressmodel.Zip + " " +
                                 addressmodel.Phone_Number + " " +
-                                addressmodel.Email + " "
+                                addressmodel.Email + " " +
+                                addressmodel.AddressbookName+" "+
+                                addressmodel.Type
                                 );
                             Console.WriteLine("------------------------------------------------------------");
                         }
