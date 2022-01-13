@@ -39,7 +39,7 @@ namespace AddressBook
                 con.Open();
                 SqlCommand cmd = new SqlCommand("Create table AddressBook(id int identity(1,1)primary key,First_Name varchar(200),Last_Name varchar(200),Address varchar(200), City varchar(200), State varchar(200), Zip varchar(200), Phone_Number varchar(50), Email varchar(200)); ", con);
                 cmd.ExecuteNonQuery();
-                Console.WriteLine("Employee Payroll table has been  created successfully!");
+                Console.WriteLine("AddressBook table has been  created successfully!");
                 con.Close();
             }
             catch (Exception e)
