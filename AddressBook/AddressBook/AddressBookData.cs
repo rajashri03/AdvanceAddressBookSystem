@@ -49,7 +49,7 @@ namespace AddressBook
             }
         }
         //Created Connection file
-        public static string ConnFile = @"Data Source=AD-PC\SQLEXPRESS; Initial Catalog =AddressbookService; Integrated Security = True;";
+        public const string ConnFile = @"Data Source=AD-PC\SQLEXPRESS; Initial Catalog =AddressbookService; Integrated Security = True;";
         SqlConnection connection = new SqlConnection(ConnFile);
         /// <summary>
         /// Method to insert data in database
@@ -135,10 +135,6 @@ namespace AddressBook
                                 );
                             Console.WriteLine("------------------------------------------------------------");
                         }
-                    }
-                    else
-                    {
-                        System.Console.WriteLine("No data found");
                     }
                 }
             }
