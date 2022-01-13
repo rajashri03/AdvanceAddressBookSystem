@@ -96,7 +96,11 @@ namespace AddressBook
             }
             return false;
         }
-
+        /// <summary>
+        /// Update Record
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public bool UpdateContact(AddressBookModel model)
         {
             try
@@ -116,13 +120,48 @@ namespace AddressBook
                     cmd.Parameters.AddWithValue("@AddressbookName", model.AddressbookName);
                     cmd.Parameters.AddWithValue("@Type", model.Type);
                     this.connection.Open();
-
                     var result = cmd.ExecuteNonQuery();
                     this.connection.Close();
-
                     if (result != 0)
                     {
-
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+            return false;
+        }
+        public bool DeleteContact(AddressBookModel model)
+        {
+            try
+            {
+                using (this.connection)
+                {
+                    SqlCommand cmd = new SqlCommand("SpAddressBook_Delete", this.connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@First_Name", model.First_Name);
+                    cmd.Parameters.AddWithValue("@Last_Name", model.Last_Name);
+                    cmd.Parameters.AddWithValue("@Address", model.Address);
+                    cmd.Parameters.AddWithValue("@City", model.City);
+                    cmd.Parameters.AddWithValue("@State", model.State);
+                    cmd.Parameters.AddWithValue("@Zip", model.Zip);
+                    cmd.Parameters.AddWithValue("@Phone_Number", model.Phone_Number);
+                    cmd.Parameters.AddWithValue("@Email", model.Email);
+                    cmd.Parameters.AddWithValue("@AddressbookName", model.AddressbookName);
+                    cmd.Parameters.AddWithValue("@Type", model.Type);
+                    this.connection.Open();
+                    var result = cmd.ExecuteNonQuery();
+                    this.connection.Close();
+                    if (result != 0)
+                    {
                         return true;
                     }
                     return false;
@@ -177,10 +216,6 @@ namespace AddressBook
                                 );
                             Console.WriteLine("------------------------------------------------------------");
                         }
-                    }
-                    else
-                    {
-                        System.Console.WriteLine("No data found");
                     }
                 }
             }
