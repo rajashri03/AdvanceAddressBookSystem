@@ -3,10 +3,16 @@ using AddressBook;
 
 Console.WriteLine("*************AddressBook System******************");
 bool status = true;
-while(status)
+
+List<AddressBookModel> addresslist = new List<AddressBookModel>()
+        {
+            new AddressBookModel(){First_Name="Rajashri",Last_Name="Telvekar",Address="Kagal",City="Kolhapur",State="MH",Zip="416216",Phone_Number="9887876789",Email="telvekar.rajashri@gmail.com",AddressbookName="AddressBook1",Type="Family"},
+            new AddressBookModel(){First_Name="Suraj",Last_Name="Telvekar",Address="Kaneri",City="Pune",State="MH",Zip="416216",Phone_Number="9887876789",Email="telvekar.rajashri@gmail.com",AddressbookName="AddressBook1",Type="Family"}
+        };
+while (status)
 {
     Console.WriteLine("Select option\n1)Create AddrssBookServiceDatabase\n2)Create Table\n3)Insert Contact\n" +
-    "4)Update Details\n5)Delete COntacts\n6)Fetch Contacts");
+    "4)Update Details\n5)Delete COntacts\n6)Fetch Contacts\n7)DataTables-AddressBook");
     int op = Convert.ToInt16(Console.ReadLine());
     AddressBookData ad = new AddressBookData();
     AddressBookModel addressbook = new AddressBookModel();
@@ -63,6 +69,9 @@ while(status)
             break;
         case 6:
             ad.GetAllContact();
+            break;
+        case 7:
+            AddressBook_Linq.Retrive_City_StateRecord(addresslist);
             break;
         default:
             status = !status;
