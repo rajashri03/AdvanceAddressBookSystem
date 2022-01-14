@@ -43,18 +43,9 @@ SELECT First_Name,Last_Name,Address,City,State,Zip,Phone_Number,Email,Addressboo
 END
 GO
 
-Create procedure SpAddressBook_Delete
+alter procedure SpAddressBook_Delete
 (
-	@First_Name varchar(200),
-	@Last_Name varchar(200),
-	@Address varchar(200),
-	@City varchar(200),
-	@State varchar(200),
-	@Zip varchar(100),
-	@Phone_Number varchar(200),
-	@Email varchar(200),
-	@AddressbookName int,
-	@Type int
+	@First_Name varchar(200)
 )
 as
 begin

@@ -49,7 +49,7 @@ namespace AddressBook
             }
         }
         //Created Connection file
-        public static string ConnFile = @"Data Source=AD-PC\SQLEXPRESS; Initial Catalog =AddressbookService; Integrated Security = True;";
+        public const string ConnFile = @"Data Source=AD-PC\SQLEXPRESS; Initial Catalog =AddressbookService; Integrated Security = True;";
         SqlConnection connection = new SqlConnection(ConnFile);
         /// <summary>
         /// Method to insert data in database
@@ -148,15 +148,6 @@ namespace AddressBook
                     SqlCommand cmd = new SqlCommand("SpAddressBook_Delete", this.connection);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@First_Name", model.First_Name);
-                    cmd.Parameters.AddWithValue("@Last_Name", model.Last_Name);
-                    cmd.Parameters.AddWithValue("@Address", model.Address);
-                    cmd.Parameters.AddWithValue("@City", model.City);
-                    cmd.Parameters.AddWithValue("@State", model.State);
-                    cmd.Parameters.AddWithValue("@Zip", model.Zip);
-                    cmd.Parameters.AddWithValue("@Phone_Number", model.Phone_Number);
-                    cmd.Parameters.AddWithValue("@Email", model.Email);
-                    cmd.Parameters.AddWithValue("@AddressbookName", model.AddressbookName);
-                    cmd.Parameters.AddWithValue("@Type", model.Type);
                     this.connection.Open();
                     var result = cmd.ExecuteNonQuery();
                     this.connection.Close();
@@ -216,6 +207,10 @@ namespace AddressBook
                                 );
                             Console.WriteLine("------------------------------------------------------------");
                         }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Data not found");
                     }
                 }
             }

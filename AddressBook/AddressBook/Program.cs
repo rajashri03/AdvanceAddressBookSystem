@@ -56,15 +56,6 @@ while(status)
         case 5:
             Console.WriteLine("************Welcome to Address Book******************");
             addressbook.First_Name = "Sejal";
-            addressbook.Last_Name = "Telvekar";
-            addressbook.Address = "Kagal";
-            addressbook.City = "Kolhapur";
-            addressbook.State = "Mahgarashtra";
-            addressbook.Zip = "982378";
-            addressbook.Phone_Number = "9876789876";
-            addressbook.Email = "rj@gmail.com";
-            addressbook.AddressbookName = "1";//Addressbook2
-            addressbook.Type = "1";//Family
             ad.DeleteContact(addressbook);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Record Deleted successfully");
